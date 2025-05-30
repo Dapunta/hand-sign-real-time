@@ -7,7 +7,7 @@ import numpy as np
 import os
 
 # Konfigurasi label yang akan dikumpulkan
-LABEL = "F"  # Ganti sesuai huruf yang ingin direkam
+LABEL = "S"  # Ganti sesuai huruf yang ingin direkam
 SAVE_PATH = "model3/mediapipe_landmarks.csv"
 SAMPLES = 300  # Jumlah data per huruf
 
