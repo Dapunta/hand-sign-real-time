@@ -32,7 +32,11 @@ with open(binarizer_name, "wb") as f:
 
 #--> Split stratified
 X_train_raw, X_test_raw, y_train_raw, y_test_raw = train_test_split(
-    X_scaled, y, test_size=0.2, stratify=y, random_state=42
+    X_scaled,
+    y,
+    test_size=0.2,
+    stratify=y,
+    random_state=42
 )
 
 #--> Encode dan ubah ke categorical shape

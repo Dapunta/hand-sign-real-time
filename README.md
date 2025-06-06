@@ -1,13 +1,19 @@
 
-# Real-Time Sign Language Recognition Using MediaPipe and MLP
+# Real-Time Hand-Sign Language Recognition Using MediaPipe and MLP
 
-## Deskripsi Singkat
+## Deskripsi
 Sistem ini merupakan aplikasi deteksi bahasa isyarat tangan (huruf alfabet) secara **real-time** menggunakan webcam, MediaPipe, dan Multi-Layer Perceptron (MLP). Semua pengenalan berbasis pada **fitur jarak antar landmark tangan**, sehingga lebih stabil meski tangan berpindah posisi di kamera.
 
 ---
 
 ## Latar Belakang
 Komunikasi menggunakan bahasa isyarat sangat penting bagi penyandang tuna wicara dan tuna rungu. Namun, tidak semua orang memahami bahasa isyarat. Sistem ini hadir untuk menerjemahkan gestur tangan ke huruf secara otomatis dan real-time, membantu jembatan komunikasi antara penyandang disabilitas dan masyarakat umum.
+
+---
+
+## Hand Sign
+
+![hand_sign](/assets/hand_sign.png)
 
 ---
 
@@ -67,12 +73,12 @@ Komunikasi menggunakan bahasa isyarat sangat penting bagi penyandang tuna wicara
 
 2. **Latih model:**
    ```
-   python train3.py
+   python train.py
    ```
 
 3. **Jalankan real-time deteksi:**
    ```
-   python cam3.py
+   python cam.py
    ```
 
 ---
