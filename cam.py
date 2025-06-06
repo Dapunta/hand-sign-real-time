@@ -1,40 +1,25 @@
 import cv2
-import numpy as np
-import mediapipe as mp
-import tensorflow as tf
-import pickle
+import pickle, numpy as np, mediapipe as mp, tensorflow as tf
 
-# Load model dan preprocessing
-model = tf.keras.models.load_model("model3/model3.h5")
+from utils.distance import extract_distance_features
+from utils.config import scaler_name, binarizer_name, model_name, cameras
 
-with open("model3/scaler.pkl", "rb") as f:
+#--> Load model dan preprocessing
+model = tf.keras.models.load_model(model_name)
+
+with open(scaler_name, "rb") as f:
     scaler = pickle.load(f)
 
-with open("model3/label_binarizer.pkl", "rb") as f:
+with open(binarizer_name, "rb") as f:
     lb = pickle.load(f)
 
-# Inisialisasi MediaPipe
+#--> Inisialisasi MediaPipe
 mp_hands = mp.solutions.hands
 mp_drawing = mp.solutions.drawing_utils
 hands = mp_hands.Hands(static_image_mode=False, max_num_hands=1, min_detection_confidence=0.7)
 
-# Fungsi jarak Euclidean antar dua titik
-def distance(p1, p2):
-    return np.sqrt((p1.x - p2.x)**2 + (p1.y - p2.y)**2)
-
-# Fitur distance antar titik (HARUS SAMA DENGAN collect_data.py!)
-def extract_distance_features(landmarks):
-    pairs = [
-        (0, 4), (0, 8), (0, 12), (0, 16), (0, 20),  # wrist ke ujung jari
-        (4, 8), (8, 12), (12, 16), (16, 20),        # antar ujung jari
-        (5, 9), (9, 13), (13, 17),                  # antar MCP
-        (2, 6), (6, 10), (10, 14), (14, 18)         # antar IP/PIP
-    ]
-    features = [distance(landmarks[a], landmarks[b]) for a, b in pairs]
-    return features
-
-# Webcam
-cap = cv2.VideoCapture(1)
+#--> Webcam
+cap = cv2.VideoCapture(cameras)
 
 while True:
     ret, frame = cap.read()
