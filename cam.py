@@ -1,15 +1,12 @@
-import cv2
-import pickle, numpy as np, mediapipe as mp, tensorflow as tf
+import cv2, pickle, numpy as np, mediapipe as mp, tensorflow as tf
 
 from utils.distance import extract_distance_features
 from utils.config import scaler_name, binarizer_name, model_name, cameras
 
 #--> Load model dan preprocessing
 model = tf.keras.models.load_model(model_name)
-
 with open(scaler_name, "rb") as f:
     scaler = pickle.load(f)
-
 with open(binarizer_name, "rb") as f:
     lb = pickle.load(f)
 
