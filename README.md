@@ -41,14 +41,14 @@ Komunikasi menggunakan bahasa isyarat sangat penting bagi penyandang tuna wicara
 - Label (misal: A, B, C, ...) diberikan manual saat collect.
 - Data disimpan ke `model3/mediapipe_landmarks.csv`.
 
-### 2. Training Model (`train3.py`)
+### 2. Training Model (`train.py`)
 - Data dari CSV di-load, fitur dinormalisasi (StandardScaler), label di-one-hot encoding (`LabelBinarizer`).
 - Data dibagi train-test (stratified, 80:20).
 - Model **MLP** dilatih (Dense(256) → Dropout → Dense(128) → Dropout → Dense(64) → Output).
 - Model, scaler, dan label encoder disimpan untuk deployment.
 - Evaluasi: classification report, confusion matrix, akurasi akhir.
 
-### 3. Real-Time Prediction (`cam3.py`)
+### 3. Real-Time Prediction (`cam.py`)
 - Webcam aktif, tangan dideteksi dengan MediaPipe.
 - Landmark diolah menjadi 16 fitur jarak, distandarkan dengan scaler.
 - Model melakukan prediksi kelas/huruf, hasil dan confidence (%) ditampilkan di layar webcam secara live.
